@@ -6,6 +6,12 @@ const categoriesRoutes = Router();
 
 const categoriesRepository = new CategoriesRepository();
 
+categoriesRoutes.get("/", (request, response) => {
+  const allCategories = categoriesRepository.list();
+
+  return response.status(201).json(allCategories);
+});
+
 categoriesRoutes.post("/", (request, response) => {
   const { name, description } = request.body;
 
