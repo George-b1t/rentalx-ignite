@@ -1,5 +1,5 @@
 import { parse } from "csv-parse";
-import { createReadStream } from "fs";
+import { createReadStream, promises } from "fs";
 
 import { ICategoriesRepository } from "../../repositories/ICategoriesRepository";
 
@@ -30,6 +30,7 @@ class ImportCategoryUseCase {
           });
         })
         .on("end", () => {
+          promises.rm(file.path);
           resolve(categories);
         })
         .on("error", (err) => {

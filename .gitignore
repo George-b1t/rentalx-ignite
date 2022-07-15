@@ -2,3 +2,5 @@ node_modules
 tmp/*
 .env
 .env.local
+.dockerignore
+Dockerfile
